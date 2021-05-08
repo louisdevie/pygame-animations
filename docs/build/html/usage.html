@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Comment utiliser le paquet &mdash; Documentation pygame-animations 1.0.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Fonctions" href="funcs.html" />
+    <link rel="prev" title="Documentation de pygame-animations" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pygame-animations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Sommaire:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comment utiliser le paquet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#integrer-le-paquet-avec-pygame">Intégrer le paquet avec pygame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importer-le-paquet">Importer le paquet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appeler-update-animation">Appeler <code class="docutils literal notranslate"><span class="pre">update_animation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creer-des-animations">Créer des animations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-deplacer-un-lutin">Exemple : Déplacer un lutin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#synthese-un-hello-world">Synthèse : un « Hello World »</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="funcs.html">Fonctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">La classe Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="effects.html">Effets d’animation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pygame-animations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Comment utiliser le paquet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/usage.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="comment-utiliser-le-paquet">
+<h1>Comment utiliser le paquet<a class="headerlink" href="#comment-utiliser-le-paquet" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="integrer-le-paquet-avec-pygame">
+<h2>Intégrer le paquet avec pygame<a class="headerlink" href="#integrer-le-paquet-avec-pygame" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="importer-le-paquet">
+<h3>Importer le paquet<a class="headerlink" href="#importer-le-paquet" title="Lien permanent vers ce titre">¶</a></h3>
+<p><em>Après</em> avoir importé <code class="docutils literal notranslate"><span class="pre">pygame</span></code>, importez le paquet avec</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame_animations</span>
+</pre></div>
+</div>
+<p>Le nom est un peut long, alors il vaut mieux que vous l’importiez en tant que</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame_animations</span> <span class="k">as</span> <span class="nn">anim</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="appeler-update-animation">
+<h3>Appeler <code class="docutils literal notranslate"><span class="pre">update_animation</span></code><a class="headerlink" href="#appeler-update-animation" title="Lien permanent vers ce titre">¶</a></h3>
+<p>La seule chose nécéssaire pour que le paquet fonctionne, c’est d’appeler</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anim</span><span class="o">.</span><span class="n">update_animations</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>à chaque frame. Le mieux est de l’appeler juste avant de dessiner quoit que ce soit.</p>
+</div>
+</div>
+<div class="section" id="creer-des-animations">
+<h2>Créer des animations<a class="headerlink" href="#creer-des-animations" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour créer une animation, créez un objet <code class="docutils literal notranslate"><span class="pre">pygame_animations.Animation</span></code> et appelez sa méthode <code class="docutils literal notranslate"><span class="pre">start()</span></code> pour l’éxecuter.</p>
+<div class="section" id="exemple-deplacer-un-lutin">
+<h3>Exemple : Déplacer un lutin<a class="headerlink" href="#exemple-deplacer-un-lutin" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Le code suivant déplace le lutin <code class="docutils literal notranslate"><span class="pre">monlutin</span></code> en x=200 en 2 secondes :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anim</span><span class="o">.</span><span class="n">Animation</span><span class="p">(</span><span class="n">monlutin</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">rect__x</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">monlutin</span></code> est l’objet à animer. Pour cet exemple, c’est un <code class="docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code> mais vous pouvez cibler n’importe quel objet.</p>
+<p><code class="docutils literal notranslate"><span class="pre">2</span></code> est la durée de l’anmation, en secondes. Vous pouvez aussi passer un flottant, et la durée sera arrondie à la milliseconde.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rect__x=200</span></code> est la propriété à animer (ici <code class="docutils literal notranslate"><span class="pre">monlutin.rect.x</span></code>).
+Le <code class="docutils literal notranslate"><span class="pre">__</span></code> remplace les <code class="docutils literal notranslate"><span class="pre">.</span></code> pour viser les sous-propriétés, par exemple <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code> devient <code class="docutils literal notranslate"><span class="pre">a__b__c</span></code>.
+Vous pouvez animer autant de propriétes que vous voulez en même temps.</p>
+</div>
+</div>
+<div class="section" id="synthese-un-hello-world">
+<h2>Synthèse : un « Hello World »<a class="headerlink" href="#synthese-un-hello-world" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="kn">import</span> <span class="nn">pygame_animations</span> <span class="k">as</span> <span class="nn">anim</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">surface</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span>
+
+<span class="n">font</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="mi">52</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MySprite</span> <span class="p">(</span><span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">MySprite</span><span class="p">()</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Group</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">anim</span><span class="o">.</span><span class="n">Animation</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Effects</span><span class="o">.</span><span class="n">cubic_in_out</span><span class="p">,</span> <span class="n">rect__x</span><span class="o">=</span><span class="mi">640</span><span class="o">-</span><span class="n">label</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">rect__y</span><span class="o">=</span><span class="mi">480</span><span class="o">-</span><span class="n">label</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+
+<span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">while</span> <span class="n">running</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ev</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">ev</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+
+  <span class="n">t</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">get_ticks</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">t</span><span class="o">&gt;</span><span class="mi">3000</span> <span class="ow">and</span> <span class="n">a</span><span class="o">.</span><span class="n">can_run</span><span class="p">():</span> <span class="c1"># l&#39;animation démarre après 3s</span>
+      <span class="n">a</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+  <span class="n">update_animations</span><span class="p">()</span>
+
+  <span class="n">surface</span><span class="o">.</span><span class="n">fill</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">group</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">surface</span><span class="p">)</span>
+
+  <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+  <span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="funcs.html" class="btn btn-neutral float-right" title="Fonctions" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Documentation de pygame-animations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, K39.
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

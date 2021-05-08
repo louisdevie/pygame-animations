@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>La classe Animation &mdash; Documentation pygame-animations 1.0.0</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Effets d’animation" href="effects.html" />
+    <link rel="prev" title="Fonctions" href="funcs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pygame-animations
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Sommaire:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Comment utiliser le paquet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcs.html">Fonctions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">La classe Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="effects.html">Effets d’animation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pygame-animations</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>La classe Animation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/animation.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="la-classe-animation">
+<h1>La classe Animation<a class="headerlink" href="#la-classe-animation" title="Lien permanent vers ce titre">¶</a></h1>
+<dl class="py class">
+<dt id="pygame_animations.Animation">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">Animation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target</span></em>, <em class="sig-param"><span class="pre">duration</span></em>, <span class="optional">[</span><em class="sig-param"><span class="pre">effect</span></em>, <span class="optional">]</span><em class="sig-param"><span class="pre">**attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Une animation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> <em>(object)</em>: l’objet à animer.</p></li>
+<li><p><strong>duration</strong> <em>(int, float)</em>: durée de l’animation, en secondes.</p></li>
+<li><p><strong>effect</strong> <em>(callable)</em>: effet à appliquer à l’animation. Il peut être un <a class="reference internal" href="effects.html#nativeeffects"><span class="std std-ref">effet natif</span></a> ou un <a class="reference internal" href="effects.html#customeffects"><span class="std std-ref">effet personnalisé</span></a>.</p></li>
+<li><p><strong>attrs</strong> : propriétés à animer. pour désigner une sous-propriété <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code>, utilisez <code class="docutils literal notranslate"><span class="pre">a__b__c</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="pygame_animations.Animation.target">
+<code class="sig-name descname"><span class="pre">target</span></code><a class="headerlink" href="#pygame_animations.Animation.target" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>(Lecture seule) L’objet ciblé par l’animation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pygame_animations.Animation.duration">
+<code class="sig-name descname"><span class="pre">duration</span></code><a class="headerlink" href="#pygame_animations.Animation.duration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>(Lecture seule) La durée de l’animation, convertie et arrondie en millisecondes.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.Animation.start">
+<code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.start" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Lance l’animation. Elle ne peut être appelée q’une seule fois.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="stopmethod"></span><dl class="py function">
+<dt id="pygame_animations.Animation.stop">
+<code class="sig-name descname"><span class="pre">stop</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.stop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Arrête l’animation et laisse l’objet animé tel quel. Une fois arrêtée, elle ne peut pas être relancée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: quand la méthode est appelée sur une animation qui n’est pas en cours, ignore si <code class="docutils literal notranslate"><span class="pre">True</span></code> ou lève une <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> si <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="cancelmethod"></span><dl class="py function">
+<dt id="pygame_animations.Animation.cancel">
+<code class="sig-name descname"><span class="pre">cancel</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.cancel" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Pareil que <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a>, mais remet l’objet animé dans son état initial.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètre</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="fastforwardmethod"></span><dl class="py function">
+<dt id="pygame_animations.Animation.fastforward">
+<code class="sig-name descname"><span class="pre">fastforward</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.fastforward" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Pareil que <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a>, mais met l’objet animé dans son état final.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètre</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.Animation.is_running">
+<code class="sig-name descname"><span class="pre">is_running</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.is_running" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation est en cours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.Animation.can_run">
+<code class="sig-name descname"><span class="pre">can_run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.can_run" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation n’a pas encore été lancée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="effects.html" class="btn btn-neutral float-right" title="Effets d’animation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="funcs.html" class="btn btn-neutral float-left" title="Fonctions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, K39.
+
+    </p>
+  </div>
+    
+    
+    
+    Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

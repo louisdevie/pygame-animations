@@ -3,18 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to pygame-animations's documentation!
-=============================================
+Documentation de pygame-animations
+======================================
+
+Ce paquet est une extension pour pygame qui vous permet d'animer presque n'importe quoi.
+
+Installation :
+    ``python3 -m pip install pygame-animations``
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Sommaire:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   usage
+   funcs
+   animation
+   effects
