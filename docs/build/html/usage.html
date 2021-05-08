@@ -204,7 +204,7 @@
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">monlutin</span></code> est l’objet à animer. Pour cet exemple, c’est un <code class="docutils literal notranslate"><span class="pre">pygame.sprite.Sprite</span></code> mais vous pouvez cibler n’importe quel objet.</p>
-<p><code class="docutils literal notranslate"><span class="pre">2</span></code> est la durée de l’anmation, en secondes. Vous pouvez aussi passer un flottant, et la durée sera arrondie à la milliseconde.</p>
+<p><code class="docutils literal notranslate"><span class="pre">2</span></code> est la durée de l’animation, en secondes. Vous pouvez aussi passer un flottant, et la durée sera arrondie à la milliseconde.</p>
 <p><code class="docutils literal notranslate"><span class="pre">rect__x=200</span></code> est la propriété à animer (ici <code class="docutils literal notranslate"><span class="pre">monlutin.rect.x</span></code>).
 Le <code class="docutils literal notranslate"><span class="pre">__</span></code> remplace les <code class="docutils literal notranslate"><span class="pre">.</span></code> pour viser les sous-propriétés, par exemple <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code> devient <code class="docutils literal notranslate"><span class="pre">a__b__c</span></code>.
 Vous pouvez animer autant de propriétes que vous voulez en même temps.</p>
@@ -229,27 +229,27 @@ Vous pouvez animer autant de propriétes que vous voulez en même temps.</p>
 <span class="n">label</span> <span class="o">=</span> <span class="n">MySprite</span><span class="p">()</span>
 <span class="n">group</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Group</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="n">anim</span><span class="o">.</span><span class="n">Animation</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Effects</span><span class="o">.</span><span class="n">cubic_in_out</span><span class="p">,</span> <span class="n">rect__x</span><span class="o">=</span><span class="mi">640</span><span class="o">-</span><span class="n">label</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">rect__y</span><span class="o">=</span><span class="mi">480</span><span class="o">-</span><span class="n">label</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">anim</span><span class="o">.</span><span class="n">Animation</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">anim</span><span class="o">.</span><span class="n">Effects</span><span class="o">.</span><span class="n">cubic_in_out</span><span class="p">,</span> <span class="n">rect__x</span><span class="o">=</span><span class="mi">640</span><span class="o">-</span><span class="n">label</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">rect__y</span><span class="o">=</span><span class="mi">480</span><span class="o">-</span><span class="n">label</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
 
 <span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
 <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="k">while</span> <span class="n">running</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">ev</span> <span class="ow">in</span> <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">ev</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">QUIT</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ev</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">QUIT</span><span class="p">:</span>
             <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
 
-  <span class="n">t</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">get_ticks</span><span class="p">()</span>
-  <span class="k">if</span> <span class="n">t</span><span class="o">&gt;</span><span class="mi">3000</span> <span class="ow">and</span> <span class="n">a</span><span class="o">.</span><span class="n">can_run</span><span class="p">():</span> <span class="c1"># l&#39;animation démarre après 3s</span>
-      <span class="n">a</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">get_ticks</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">&gt;</span><span class="mi">3000</span> <span class="ow">and</span> <span class="n">a</span><span class="o">.</span><span class="n">can_run</span><span class="p">():</span> <span class="c1"># l&#39;animation démarre après 3s</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-  <span class="n">update_animations</span><span class="p">()</span>
+    <span class="n">anim</span><span class="o">.</span><span class="n">update_animations</span><span class="p">()</span>
 
-  <span class="n">surface</span><span class="o">.</span><span class="n">fill</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-  <span class="n">group</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">surface</span><span class="p">)</span>
+    <span class="n">surface</span><span class="o">.</span><span class="n">fill</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">surface</span><span class="p">)</span>
 
-  <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
-  <span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+    <span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>

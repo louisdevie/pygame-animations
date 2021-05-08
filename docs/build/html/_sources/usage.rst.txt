@@ -52,7 +52,7 @@ Le code suivant déplace le lutin ``monlutin`` en x=200 en 2 secondes :
 ``monlutin`` est l'objet à animer. Pour cet exemple, c'est un ``pygame.sprite.Sprite`` mais vous pouvez cibler n'importe quel objet.
 
 
-``2`` est la durée de l'anmation, en secondes. Vous pouvez aussi passer un flottant, et la durée sera arrondie à la milliseconde.
+``2`` est la durée de l'animation, en secondes. Vous pouvez aussi passer un flottant, et la durée sera arrondie à la milliseconde.
 
 
 ``rect__x=200`` est la propriété à animer (ici ``monlutin.rect.x``).
@@ -81,27 +81,27 @@ Vous pouvez animer autant de propriétes que vous voulez en même temps.
             self.rect = self.image.get_rect()
     label = MySprite()
     group = pygame.sprite.Group(label)
-
-    a = anim.Animation(label, 2, Effects.cubic_in_out, rect__x=640-label.rect.w, rect__y=480-label.rect.h)
+    
+    a = anim.Animation(label, 2, anim.Effects.cubic_in_out, rect__x=640-label.rect.w, rect__y=480-label.rect.h)
     
     clock = pygame.time.Clock()
     running = True
     
     while running:
         for ev in pygame.event.get():
-            if ev.type == QUIT:
+            if ev.type == pygame.QUIT:
                 running = False
-
-      t = pygame.time.get_ticks()
-      if t>3000 and a.can_run(): # l'animation démarre après 3s
-          a.start()
-
-      update_animations()
-      
-      surface.fill((0, 0, 0))
-      group.draw(surface)
-
-      pygame.display.flip()
-      clock.tick(30)
+        
+        t = pygame.time.get_ticks()
+        if t>3000 and a.can_run(): # l'animation démarre après 3s
+        a.start()
+        
+        anim.update_animations()
+        
+        surface.fill((0, 0, 0))
+        group.draw(surface)
+        
+        pygame.display.flip()
+        clock.tick(30)
     
     pygame.quit()
