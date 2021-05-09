@@ -3,6 +3,7 @@ import pygame as _pg
 
 # load effects
 from .effects import Effects
+from .events import _anim_started, _anim_stopped
 
 # all running animations
 # please dont modify it yourself
@@ -18,6 +19,8 @@ Parameters:
         the duration of the animation, in seconds.
     effect (callable)
         the effect to apply to the animation. It can be a built-in effect (see pygame_animations.Effects) or any function that takes one float parameter and return a float
+    flag
+        use it to identify the animation. it can be anything.
     **attrs
         the attributes of the target to animate. To animate `a.b`, use `a__b`.
 
@@ -31,12 +34,13 @@ Example : move a sprite to x=100 in 1 second
     myanimation = Animation(mysprite, 1, rect__x=100)
 or
     myanimation = Animation(mysprite.rect, 1, x=100)"""
-	def __init__(self, target, duration, effect=Effects.linear, **attrs):
+	def __init__(self, target, duration, effect=Effects.linear, /, flag=None, **attrs):
 		self._end = attrs
 		self._start = None
 		self._startticks = 0
 		self.duration = round(duration*1000)
 		self.target = target
+		self.flag = flag
 		self._effect = effect
 		
 	def __repr__(self):
@@ -54,6 +58,16 @@ or
 			raise TypeError('Animations can\'t be modified after initialisation')
 		else:
 			object.__delattr__(self, attr, val)
+
+	def __add__(self, obj):
+		if issubclass(type(obj), Animation):
+			return AnimationSequence(self, obj)
+		return NotImplemented
+
+	def __and__(self, obj):
+		if issubclass(type(obj), Animation):
+			return AnimationGroup(self, obj)
+		return NotImplemented
 		
 	def start(self):
 		"""Run the animation. It can only be used once."""
@@ -66,9 +80,11 @@ or
 			subtarget, subattr = eval('.'.join(['self.target']+sep[:-1])), sep[-1]
 			self._start[attr] = getattr(subtarget, subattr)
 		# start time
-		self._startticks = _pg.time.get_ticks()
+		if not self._startticks:
+			self._startticks = _pg.time.get_ticks()
 		# get updated
 		_running.append(self)
+		_anim_started(self)
 		
 	def stop(self, /, noerror=False):
 		"""Stop the animation and leave the target as it is. Once stoppped, it cannot be resumed.
@@ -78,6 +94,7 @@ or
 			if noerror: return
 			raise RuntimeError('Not running')
 		_running.remove(self)
+		_anim_stopped(self)
 
 	def cancel(self, /, noerror=False):
 		"""like Animation.stop(), but reset the target in its initial state."""
@@ -85,6 +102,7 @@ or
 			if noerror: return
 			raise RuntimeError('Not running')
 		_running.remove(self)
+		_anim_stopped(self)
 		for attr in self._start:
 			sep = attr.split('__')
 			subtarget, subattr = eval('.'.join(['self.target']+sep[:-1])), sep[-1]
@@ -96,6 +114,7 @@ or
 			if noerror: return
 			raise RuntimeError('Not running')
 		_running.remove(self)
+		_anim_stopped(self)
 		for attr in self._end:
 			sep = attr.split('__')
 			subtarget, subattr = eval('.'.join(['self.target']+sep[:-1])), sep[-1]
@@ -125,3 +144,175 @@ or
 		# if finished
 		if x > 1:
 			_running.remove(self)
+			_anim_stopped(self)
+
+
+class AnimationSequence (Animation):
+	"""Multiple animations played one after another.
+You can create AnimationSequences by adding multiple animations together : anim1 + anim2 is the same as AnimationSequence(anim1, anim2)
+
+Parameters:
+    a, b, *others
+        animations for the sequence.
+    flag
+        use it to identify the animation. it can be anything.
+
+Attributes:
+    animations
+        a tuple of the animations that makes up the sequence, in order. There is at least 2 animations.
+    duration (int)
+        the duration of the animation, in milliseconds. it is the sum of the durations of all the `animations`."""
+	def __init__(self, a, b, *others, flag=None):
+		self.animations = tuple()
+		for anim in (a, b)+others:
+			if not anim.can_run():
+				raise RuntimeError(f'the animation <{repr(anim)}> has arleady been started.')
+			if type(a) is AnimationSequence:
+				self.animations += anim.animations
+			else:
+				self.animations += (anim,)
+		self._startticks = 0
+		self._start = None
+		self.duration = sum([anim.duration for anim in self.animations])
+		self.flag = flag
+		self._effect = None
+		
+	def __repr__(self):
+		return f'AnimationSequence[{", ".join([repr(anim) for anim in self.animations])}]'
+		
+	def start(self):
+		"""Run the animation. It can only be used once."""
+		if self._start is not None:
+			raise RuntimeError('Animations can only be run once')
+		self._start = 1	
+		# start time
+		startticks = self._startticks if self.startticks else _pg.time.get_ticks()
+		for anim in self.animations:
+			anim._startticks = startticks
+			anim.start()
+			startticks += anim.duration
+		# get updated
+		_running.append(self)
+		_anim_started(self)
+		
+	def stop(self, /, noerror=False):
+		"""Stop itself and call stop() on the animations. Once stoppped, it cannot be resumed.
+
+    noerror (optional): when calling this method on an animation that isn't running, a RuntimeError will be raised if set to False, and just ignored it if set to True"""
+		if not self in _running:
+			if noerror: return
+			raise RuntimeError('Not running')
+		for anim in self.animations:
+			anim.stop(noerror=True)
+		_running.remove(self)
+		_anim_stopped(self)
+
+	def cancel(self, /, noerror=False):
+		"""like AnimationSequence.stop(), but call cancel() on the animations."""
+		if not self in _running:
+			if noerror: return
+			raise RuntimeError('Not running')
+		for anim in self.animations:
+			anim.cancel(noerror=True)
+		_running.remove(self)
+		_anim_stopped(self)
+
+	def fastforward(self, /, noerror=False):
+		"""like AnimationSequence.stop(), but call fastforward() on the animations."""
+		if not self in _running:
+			if noerror: return
+			raise RuntimeError('Not running')
+		for anim in self.animations:
+			anim.fastforward(noerror=True)
+		_running.remove(self)
+		_anim_stopped(self)
+	
+	def _update(self, ticks):
+		if all([not anim.is_running() for anim in self.animations]):
+			_running.remove(self)
+			_anim_stopped(self)
+
+
+class AnimationGroup (Animation):
+	"""Multiple animations played at the same time.
+You can create AnimationGroups by and-ing multiple animations together : anim1 & anim2 is the same as AnimationGroup(anim1, anim2)
+
+Parameters:
+    a, b, *others
+        animations for the sequence.
+    flag
+        use it to identify the animation. it can be anything.
+
+Attributes:
+    animations
+        a tuple of the animations that makes up the sequence. There is at least 2 animations.
+    duration (int)
+        the duration of the animation, in milliseconds. it is the longest duration in all of the `animations`."""
+	def __init__(self, a, b, *others, flag=None):
+		self.animations = tuple()
+		for anim in (a, b)+others:
+			if not anim.can_run():
+				raise RuntimeError(f'the animation <{repr(anim)}> has arleady been started.')
+			if type(a) is AnimationGroup:
+				self.animations += anim.animations
+			else:
+				self.animations += (anim,)
+		self._start = None
+		self.duration = max([anim.duration for anim in self.animations])
+		self.flag = flag
+		self._effect = None
+		
+	def __repr__(self):
+		return f'AnimationGroup[{", ".join([repr(anim) for anim in self.animations])}]'
+		
+	def start(self):
+		"""Run the animation. It can only be used once."""
+		if self._start is not None:
+			raise RuntimeError('Animations can only be run once')
+		self._start = 1	
+		# start time
+		if not self._startticks:
+			self._startticks = _pg.time.get_ticks()
+		for anim in self.animations:
+			anim._startticks = self._startticks
+			anim.start()
+		# get updated
+		_running.append(self)
+		_anim_started(self)
+		
+	def stop(self, /, noerror=False):
+		"""Stop itself and call stop() on the animations. Once stoppped, it cannot be resumed.
+
+    noerror (optional): when calling this method on an animation that isn't running, a RuntimeError will be raised if set to False, and just ignored it if set to True"""
+		if not self in _running:
+			if noerror: return
+			raise RuntimeError('Not running')
+		for anim in self.animations:
+			anim.stop(noerror=True)
+		_running.remove(self)
+		_anim_stopped(self)
+
+	def cancel(self, /, noerror=False):
+		"""like AnimationGroup.stop(), but call cancel() on the animations."""
+		if not self in _running:
+			if noerror: return
+			raise RuntimeError('Not running')
+		for anim in self.animations:
+			anim.cancel(noerror=True)
+		_running.remove(self)
+		_anim_stopped(self)
+
+	def fastforward(self, /, noerror=False):
+		"""like AnimationGroup.stop(), but call fastforward() on the animations."""
+		if not self in _running:
+			if noerror: return
+			raise RuntimeError('Not running')
+		for anim in self.animations:
+			anim.fastforward(noerror=True)
+		_running.remove(self)
+		_anim_stopped(self)
+	
+	def _update(self, ticks):
+		if all([not anim.is_running() for anim in self.animations]):
+			_running.remove(self)
+			_anim_stopped(self)

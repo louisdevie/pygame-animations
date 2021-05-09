@@ -1,5 +1,6 @@
-from .animation import Animation, _running, _pg
+from .animation import Animation, AnimationSequence, AnimationGroup, _running, _pg
 from .effects import Effects
+from .events import ANIMATIONSTARTED, ANIMATIONENDED
 
 def update_animations():
 	"""update all running animations.
@@ -23,7 +24,7 @@ def fastforward_all():
 	while _running:
 		_running[0].fastforward(noerror=True)
 	
-__all__ = ['Animation', 'Effects', 'update_animations', 'stop_all', 'cancel_all', 'fastforward_all']
+__all__ = ['Animation', 'AnimationSequence', 'AnimationGroup', 'Effects', 'update_animations', 'stop_all', 'cancel_all', 'fastforward_all', 'ANIMATIONSTARTED', 'ANIMATIONENDED']
 __doc__ = """implements animations for pygame
 
 This package is an extension for pygame that lets you animate almost anything."""

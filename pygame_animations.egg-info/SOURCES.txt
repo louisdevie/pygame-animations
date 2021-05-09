@@ -4,6 +4,7 @@ setup.py
 pygame_animations/__init__.py
 pygame_animations/animation.py
 pygame_animations/effects.py
+pygame_animations/events.py
 pygame_animations.egg-info/PKG-INFO
 pygame_animations.egg-info/SOURCES.txt
 pygame_animations.egg-info/dependency_links.txt

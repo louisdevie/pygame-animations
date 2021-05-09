@@ -18,4 +18,5 @@ Installation :
    usage
    funcs
    animation
+   events
    effects

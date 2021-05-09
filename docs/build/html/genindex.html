@@ -87,7 +87,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Comment utiliser le paquet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcs.html">Fonctions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="animation.html">La classe Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Les classes Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Évènements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="effects.html">Effets d’animation</a></li>
 </ul>
 
@@ -158,17 +159,42 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#D"><strong>D</strong></a>
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#D"><strong>D</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#T"><strong>T</strong></a>
  
 </div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="events.html#pygame_animations.ANIMATIONENDED">ANIMATIONENDED (attribut pygame_animations)</a>
+</li>
+      <li><a href="animation.html#pygame_animations.AnimationGroup.animations">animations (attribut pygame_animations.AnimationGroup)</a>
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.animations">(attribut pygame_animations.AnimationSequence)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="events.html#pygame_animations.ANIMATIONSTARTED">ANIMATIONSTARTED (attribut pygame_animations)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="animation.html#pygame_animations.Animation.duration">duration (attribut pygame_animations.Animation)</a>
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.duration">(attribut pygame_animations.AnimationGroup)</a>
 </li>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.duration">(attribut pygame_animations.AnimationSequence)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -190,6 +216,30 @@
         <li><a href="animation.html#pygame_animations.Animation.start">pygame_animations.Animation.start()</a>
 </li>
         <li><a href="animation.html#pygame_animations.Animation.stop">pygame_animations.Animation.stop()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.can_run">pygame_animations.AnimationGroup.can_run()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.cancel">pygame_animations.AnimationGroup.cancel()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.fastforward">pygame_animations.AnimationGroup.fastforward()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.is_running">pygame_animations.AnimationGroup.is_running()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.start">pygame_animations.AnimationGroup.start()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.stop">pygame_animations.AnimationGroup.stop()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.can_run">pygame_animations.AnimationSequence.can_run()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.cancel">pygame_animations.AnimationSequence.cancel()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.fastforward">pygame_animations.AnimationSequence.fastforward()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.is_running">pygame_animations.AnimationSequence.is_running()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.start">pygame_animations.AnimationSequence.start()</a>
+</li>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.stop">pygame_animations.AnimationSequence.stop()</a>
 </li>
         <li><a href="funcs.html#pygame_animations.cancel_all">pygame_animations.cancel_all()</a>
 </li>
@@ -243,13 +293,101 @@
         <li><a href="animation.html#pygame_animations.Animation.start">fonction de base</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pygame_animations.Animation.stop()
 
       <ul>
         <li><a href="animation.html#pygame_animations.Animation.stop">fonction de base</a>
+</li>
+      </ul></li>
+      <li><a href="animation.html#pygame_animations.AnimationGroup">pygame_animations.AnimationGroup (classe de base)</a>
+</li>
+      <li>
+    pygame_animations.AnimationGroup.can_run()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.can_run">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationGroup.cancel()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.cancel">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationGroup.fastforward()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.fastforward">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationGroup.is_running()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.is_running">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationGroup.start()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.start">fonction de base</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    pygame_animations.AnimationGroup.stop()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationGroup.stop">fonction de base</a>
+</li>
+      </ul></li>
+      <li><a href="animation.html#pygame_animations.AnimationSequence">pygame_animations.AnimationSequence (classe de base)</a>
+</li>
+      <li>
+    pygame_animations.AnimationSequence.can_run()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.can_run">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationSequence.cancel()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.cancel">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationSequence.fastforward()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.fastforward">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationSequence.is_running()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.is_running">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationSequence.start()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.start">fonction de base</a>
+</li>
+      </ul></li>
+      <li>
+    pygame_animations.AnimationSequence.stop()
+
+      <ul>
+        <li><a href="animation.html#pygame_animations.AnimationSequence.stop">fonction de base</a>
 </li>
       </ul></li>
       <li>

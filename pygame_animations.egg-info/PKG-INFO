@@ -1,12 +1,14 @@
 Metadata-Version: 2.1
 Name: pygame-animations
-Version: 1.0.0
+Version: 1.1.0
 Summary: An extension for pygame
 Home-page: https://github.com/k39dev/pygame-animations
 Author: K_39
 Author-email: louisdevie@gmail.com
 License: UNKNOWN
 Description: # pygame-animations
+        
+        [![Documentation Status](https://readthedocs.org/projects/pygame-animations/badge/?version=latest)](https://pygame-animations.readthedocs.io/fr/latest/?badge=latest)
         
         This package is an extension for pygame that lets you animate almost anything.
         

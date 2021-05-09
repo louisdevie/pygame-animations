@@ -15,7 +15,10 @@ class MySprite (pygame.sprite.Sprite):
 label = MySprite()
 group = pygame.sprite.Group(label)
 
-a = anim.Animation(label, 2, anim.Effects.cubic_in_out, rect__x=640-label.rect.w, rect__y=480-label.rect.h)
+a = anim.Animation(label, 2, anim.Effects.cubic_in_out, rect__x=640-label.rect.w)
+b = anim.Animation(label, 1, anim.Effects.cubic_in_out, rect__y=480-label.rect.h)
+c = a & b
+print(c)
 
 clock = pygame.time.Clock()
 running = True
@@ -26,8 +29,8 @@ while running:
 			running = False
 
 	t = pygame.time.get_ticks()
-	if t>3000 and a.can_run(): # l'animation démarre après 3s
-		a.start()
+	if t>3000 and c.can_run(): # l'animation démarre après 3s
+		c.start()
 
 	anim.update_animations()
 

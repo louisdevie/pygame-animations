@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>La classe Animation &mdash; Documentation pygame-animations 1.0.0</title>
+  <title>Les classes Animation &mdash; Documentation pygame-animations 1.0.0</title>
   
 
   
@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Effets d’animation" href="effects.html" />
+    <link rel="next" title="Évènements" href="events.html" />
     <link rel="prev" title="Fonctions" href="funcs.html" /> 
 </head>
 
@@ -89,7 +89,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Comment utiliser le paquet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcs.html">Fonctions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">La classe Animation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Les classes Animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classe-animation">Classe Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classe-animationsequence">Classe AnimationSequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classe-animationgroup">Classe AnimationGroup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Évènements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="effects.html">Effets d’animation</a></li>
 </ul>
 
@@ -139,7 +145,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>La classe Animation</li>
+      <li>Les classes Animation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -158,11 +164,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="la-classe-animation">
-<h1>La classe Animation<a class="headerlink" href="#la-classe-animation" title="Lien permanent vers ce titre">¶</a></h1>
+  <div class="section" id="les-classes-animation">
+<h1>Les classes Animation<a class="headerlink" href="#les-classes-animation" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="classe-animation">
+<h2>Classe Animation<a class="headerlink" href="#classe-animation" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py class">
 <dt id="pygame_animations.Animation">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">Animation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target</span></em>, <em class="sig-param"><span class="pre">duration</span></em>, <span class="optional">[</span><em class="sig-param"><span class="pre">effect</span></em>, <span class="optional">]</span><em class="sig-param"><span class="pre">**attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">Animation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target,</span> <span class="pre">duration[,</span> <span class="pre">effect]</span> <span class="pre">[,</span> <span class="pre">flag=None],</span> <span class="pre">**attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Une animation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -170,6 +178,7 @@
 <li><p><strong>target</strong> <em>(object)</em>: l’objet à animer.</p></li>
 <li><p><strong>duration</strong> <em>(int, float)</em>: durée de l’animation, en secondes.</p></li>
 <li><p><strong>effect</strong> <em>(callable)</em>: effet à appliquer à l’animation. Il peut être un <a class="reference internal" href="effects.html#nativeeffects"><span class="std std-ref">effet natif</span></a> ou un <a class="reference internal" href="effects.html#customeffects"><span class="std std-ref">effet personnalisé</span></a>.</p></li>
+<li><p><strong>flag</strong> : sert à repérer l’animation. N’importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.</p></li>
 <li><p><strong>attrs</strong> : propriétés à animer. pour désigner une sous-propriété <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code>, utilisez <code class="docutils literal notranslate"><span class="pre">a__b__c</span></code></p></li>
 </ul>
 </dd>
@@ -189,7 +198,7 @@
 <dl class="py function">
 <dt id="pygame_animations.Animation.start">
 <code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.start" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Lance l’animation. Elle ne peut être appelée q’une seule fois.</p>
+<dd><p>Lance l’animation. Elle ne peut être appelée qu’une seule fois.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p>Aucuns</p>
@@ -279,6 +288,249 @@
 </dd></dl>
 
 </div>
+<div class="section" id="classe-animationsequence">
+<h2>Classe AnimationSequence<a class="headerlink" href="#classe-animationsequence" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="pygame_animations.AnimationSequence">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">AnimationSequence</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">[*others]</span> <span class="pre">[,</span> <span class="pre">flag=None]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Inhérite de <code class="docutils literal notranslate"><span class="pre">pygame_animations.Animation</span></code></p>
+<p>Plusieurs animations lancées les une après les autres.
+Une séquence peut être créée en additionnant plusieurs animations : <code class="docutils literal notranslate"><span class="pre">anim1</span> <span class="pre">+</span> <span class="pre">anim2</span> <span class="pre">+</span> <span class="pre">anim3</span></code> vaut <code class="docutils literal notranslate"><span class="pre">AnimationSequence(anim1,</span> <span class="pre">anim2,</span> <span class="pre">anim3)</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong>, <strong>b</strong> et <strong>others</strong> <em>(Animation)</em>: les animations de la séquence</p></li>
+<li><p><strong>flag</strong> : sert à repérer l’animation. N’importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="pygame_animations.AnimationSequence.animations">
+<code class="sig-name descname"><span class="pre">animations</span></code><a class="headerlink" href="#pygame_animations.AnimationSequence.animations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>(Lecture seule) Les animations qui composent la séquence.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pygame_animations.AnimationSequence.duration">
+<code class="sig-name descname"><span class="pre">duration</span></code><a class="headerlink" href="#pygame_animations.AnimationSequence.duration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>(Lecture seule) La durée de l’animation, égale à la somme des durées des animations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationSequence.start">
+<code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.start" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Lance l’animation. Elle ne peut être appelée qu’une seule fois.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="stopsequence"></span><dl class="py function">
+<dt id="pygame_animations.AnimationSequence.stop">
+<code class="sig-name descname"><span class="pre">stop</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.stop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Arrête la séquence et appelle <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a> sur toutes les animations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: quand la méthode est appelée sur une animation qui n’est pas en cours, ignore si <code class="docutils literal notranslate"><span class="pre">True</span></code> ou lève une <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> si <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="cancelsequence"></span><dl class="py function">
+<dt id="pygame_animations.AnimationSequence.cancel">
+<code class="sig-name descname"><span class="pre">cancel</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.cancel" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Pareil que <a class="reference internal" href="#stopsequence"><span class="std std-ref">stop()</span></a>, mais appelle <a class="reference internal" href="#cancelmethod"><span class="std std-ref">cancel()</span></a> sur toutes les animations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètre</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="fastforwardsequence"></span><dl class="py function">
+<dt id="pygame_animations.AnimationSequence.fastforward">
+<code class="sig-name descname"><span class="pre">fastforward</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.fastforward" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Pareil que <a class="reference internal" href="#stopsequence"><span class="std std-ref">stop()</span></a>, mais appelle <a class="reference internal" href="#fastforwardmethod"><span class="std std-ref">fastforward()</span></a> sur toutes les animations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètre</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationSequence.is_running">
+<code class="sig-name descname"><span class="pre">is_running</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.is_running" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation est en cours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationSequence.can_run">
+<code class="sig-name descname"><span class="pre">can_run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.can_run" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation n’a pas encore été lancée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="classe-animationgroup">
+<h2>Classe AnimationGroup<a class="headerlink" href="#classe-animationgroup" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="pygame_animations.AnimationGroup">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">AnimationGroup</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">[*others]</span> <span class="pre">[,</span> <span class="pre">flag=None]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Inhérite de <code class="docutils literal notranslate"><span class="pre">pygame_animations.Animation</span></code></p>
+<p>Plusieurs animations lancées en même temps.
+Un groupe peut être créé en utilisant l’opérateur <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> entre plusieurs animations : <code class="docutils literal notranslate"><span class="pre">anim1</span> <span class="pre">&amp;</span> <span class="pre">anim2</span> <span class="pre">&amp;</span> <span class="pre">anim3</span></code> vaut <code class="docutils literal notranslate"><span class="pre">AnimationGroup(anim1,</span> <span class="pre">anim2,</span> <span class="pre">anim3)</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong>, <strong>b</strong> et <strong>others</strong> <em>(Animation)</em>: les animations du groupe</p></li>
+<li><p><strong>flag</strong> : sert à repérer l’animation. N’importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="pygame_animations.AnimationGroup.animations">
+<code class="sig-name descname"><span class="pre">animations</span></code><a class="headerlink" href="#pygame_animations.AnimationGroup.animations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>(Lecture seule) Les animations qui composent le groupe.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pygame_animations.AnimationGroup.duration">
+<code class="sig-name descname"><span class="pre">duration</span></code><a class="headerlink" href="#pygame_animations.AnimationGroup.duration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>(Lecture seule) La durée de l’animation, égale à la durée la plus longue de toutes les animations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationGroup.start">
+<code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.start" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Lance l’animation. Elle ne peut être appelée qu’une seule fois.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="stopgroup"></span><dl class="py function">
+<dt id="pygame_animations.AnimationGroup.stop">
+<code class="sig-name descname"><span class="pre">stop</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.stop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Arrête la séquence et appelle <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a> sur toutes les animations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: quand la méthode est appelée sur une animation qui n’est pas en cours, ignore si <code class="docutils literal notranslate"><span class="pre">True</span></code> ou lève une <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> si <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="cancelgroup"></span><dl class="py function">
+<dt id="pygame_animations.AnimationGroup.cancel">
+<code class="sig-name descname"><span class="pre">cancel</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.cancel" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Pareil que <a class="reference internal" href="#stopgroup"><span class="std std-ref">stop()</span></a>, mais appelle <a class="reference internal" href="#cancelmethod"><span class="std std-ref">cancel()</span></a> sur toutes les animations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètre</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="fastforwardgroup"></span><dl class="py function">
+<dt id="pygame_animations.AnimationGroup.fastforward">
+<code class="sig-name descname"><span class="pre">fastforward</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">noerror=False</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.fastforward" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Pareil que <a class="reference internal" href="#stopgroup"><span class="std std-ref">stop()</span></a>, mais appelle <a class="reference internal" href="#fastforwardmethod"><span class="std std-ref">fastforward()</span></a> sur toutes les animations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètre</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationGroup.is_running">
+<code class="sig-name descname"><span class="pre">is_running</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.is_running" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation est en cours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationGroup.can_run">
+<code class="sig-name descname"><span class="pre">can_run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.can_run" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation n’a pas encore été lancée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p>Aucuns</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
 
 
            </div>
@@ -286,7 +538,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="effects.html" class="btn btn-neutral float-right" title="Effets d’animation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="events.html" class="btn btn-neutral float-right" title="Évènements" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="funcs.html" class="btn btn-neutral float-left" title="Fonctions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Documentation de pygame-animations &mdash; Documentation pygame-animations 1.0.0</title>
+  <title>Évènements &mdash; Documentation pygame-animations 1.0.0</title>
   
 
   
@@ -39,7 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Comment utiliser le paquet" href="usage.html" /> 
+    <link rel="next" title="Effets d’animation" href="effects.html" />
+    <link rel="prev" title="Les classes Animation" href="animation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +54,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> pygame-animations
+            <a href="index.html" class="icon icon-home"> pygame-animations
           
 
           
@@ -85,11 +86,11 @@
             
             
               <p class="caption"><span class="caption-text">Sommaire:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Comment utiliser le paquet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funcs.html">Fonctions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="animation.html">Les classes Animation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="events.html">Évènements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Évènements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="effects.html">Effets d’animation</a></li>
 </ul>
 
@@ -106,7 +107,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">pygame-animations</a>
+          <a href="index.html">pygame-animations</a>
         
       </nav>
 
@@ -137,15 +138,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Documentation de pygame-animations</li>
+      <li>Évènements</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+            <a href="_sources/events.rst.txt" rel="nofollow"> Afficher la source de la page</a>
           
         
       </li>
@@ -158,37 +159,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="documentation-de-pygame-animations">
-<h1>Documentation de pygame-animations<a class="headerlink" href="#documentation-de-pygame-animations" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Ce paquet est une extension pour pygame qui vous permet d’animer presque n’importe quoi.</p>
-<dl class="simple">
-<dt>Installation :</dt><dd><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pygame-animations</span></code></p>
+  <div class="section" id="evenements">
+<h1>Évènements<a class="headerlink" href="#evenements" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Des évènements pygame sont postés quand une animation débute ou finis.</p>
+<p>Ce paquet rajoute donc deux types d’évènements:</p>
+<dl class="py attribute">
+<dt id="pygame_animations.ANIMATIONSTARTED">
+<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">ANIMATIONSTARTED</span></code><a class="headerlink" href="#pygame_animations.ANIMATIONSTARTED" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Posté quand une animation débute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributs</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>animation</strong> : l’animation qui a été lancée.</p></li>
+<li><p><strong>flag</strong> : le <code class="docutils literal notranslate"><span class="pre">flag</span></code> de l’animation.</p></li>
+</ul>
 </dd>
 </dl>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Sommaire:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Comment utiliser le paquet</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#integrer-le-paquet-avec-pygame">Intégrer le paquet avec pygame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#creer-des-animations">Créer des animations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#synthese-un-hello-world">Synthèse : un « Hello World »</a></li>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pygame_animations.ANIMATIONENDED">
+<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">ANIMATIONENDED</span></code><a class="headerlink" href="#pygame_animations.ANIMATIONENDED" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Posté quand une animation prends fin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributs</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>animation</strong> : l’animation qui a pris fin.</p></li>
+<li><p><strong>flag</strong> : le <code class="docutils literal notranslate"><span class="pre">flag</span></code> de l’animation.</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="funcs.html">Fonctions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="animation.html">Les classes Animation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="animation.html#classe-animation">Classe Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="animation.html#classe-animationsequence">Classe AnimationSequence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="animation.html#classe-animationgroup">Classe AnimationGroup</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="events.html">Évènements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="effects.html">Effets d’animation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="effects.html#effets-natifs">Effets natifs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="effects.html#effets-personnalises">Effets personnalisés</a></li>
-</ul>
-</li>
-</ul>
-</div>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -197,7 +199,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="usage.html" class="btn btn-neutral float-right" title="Comment utiliser le paquet" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="effects.html" class="btn btn-neutral float-right" title="Effets d’animation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="animation.html" class="btn btn-neutral float-left" title="Les classes Animation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 
   <hr/>
