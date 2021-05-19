@@ -19,8 +19,8 @@ Parameters:
         the duration of the animation, in seconds.
     effect (callable)
         the effect to apply to the animation. It can be a built-in effect (see pygame_animations.Effects) or any function that takes one float parameter and return a float
-    flag
-        use it to identify the animation. it can be anything.
+    flags
+        a string with flags separated by commas, used to identify the animation.
     **attrs
         the attributes of the target to animate. To animate `a.b`, use `a__b`.
 
@@ -34,13 +34,13 @@ Example : move a sprite to x=100 in 1 second
     myanimation = Animation(mysprite, 1, rect__x=100)
 or
     myanimation = Animation(mysprite.rect, 1, x=100)"""
-	def __init__(self, target, duration, effect=Effects.linear, /, flag=None, **attrs):
+	def __init__(self, target, duration, effect=Effects.linear, /, flags=None, **attrs):
 		self._end = attrs
 		self._start = None
 		self._startticks = 0
 		self.duration = round(duration*1000)
 		self.target = target
-		self.flag = flag
+		self._setflags(flags)
 		self._effect = effect
 		
 	def __repr__(self):
@@ -127,6 +127,42 @@ or
 	def can_run(self):
 		"""Return True if the animation hasn't been arleady started."""
 		return self._start is None
+
+	def match(self, flags):
+		"""return true if the animation's flags match the given flags.
+
+flags must be a string, with flags separated by commas.
+special flags:
+"*" will match anyhing
+"flag1|flag2" will match either flag1 or flag2
+
+for example, "flag1,flag2|flag3" will match "flag1,flag2" or "flag1,flag3" 
+
+an animation without flags will not match anything"""
+		flags = flags.split(',')
+		if len(self._flags) != len(flags):
+			return False
+		for i, f in enumerate(flags):
+			if f == '*':
+				continue
+			for f in r.split('|'):
+				if not f.isalnum():
+					raise ValueError(f'invalid flag "{f}" : flags must be alphanumeric')
+				if f == self._flags[i]:
+					break
+			else:
+				return False
+		return True
+
+	def _setflags(self, farg):
+		self._flags = tuple()
+		if flags is not None:
+			for f in flags.split(','):
+				if not f.isalnum():
+					raise ValueError(f'invalid flag "{f}" : flags must be alphanumeric')
+				if f in self._flags:
+					raise ValueError(f'duplicated flag "{f}"')
+				self._flags += (f,)
 	
 	def _update(self, ticks):
 		# time since start
@@ -155,14 +191,14 @@ Parameters:
     a, b, *others
         animations for the sequence.
     flag
-        use it to identify the animation. it can be anything.
+        a string with flags separated by commas, used to identify the animation.
 
 Attributes:
     animations
         a tuple of the animations that makes up the sequence, in order. There is at least 2 animations.
     duration (int)
         the duration of the animation, in milliseconds. it is the sum of the durations of all the `animations`."""
-	def __init__(self, a, b, *others, flag=None):
+	def __init__(self, a, b, *others, flags=None):
 		self.animations = tuple()
 		for anim in (a, b)+others:
 			if not anim.can_run():
@@ -174,7 +210,7 @@ Attributes:
 		self._startticks = 0
 		self._start = None
 		self.duration = sum([anim.duration for anim in self.animations])
-		self.flag = flag
+		self._setflags(flags)
 		self._effect = None
 		
 	def __repr__(self):
@@ -241,14 +277,14 @@ Parameters:
     a, b, *others
         animations for the sequence.
     flag
-        use it to identify the animation. it can be anything.
+        a string with flags separated by commas, used to identify the animation.
 
 Attributes:
     animations
         a tuple of the animations that makes up the sequence. There is at least 2 animations.
     duration (int)
         the duration of the animation, in milliseconds. it is the longest duration in all of the `animations`."""
-	def __init__(self, a, b, *others, flag=None):
+	def __init__(self, a, b, *others, flags=None):
 		self.animations = tuple()
 		for anim in (a, b)+others:
 			if not anim.can_run():
@@ -259,7 +295,7 @@ Attributes:
 				self.animations += (anim,)
 		self._start = None
 		self.duration = max([anim.duration for anim in self.animations])
-		self.flag = flag
+		self._setflags(flags)
 		self._effect = None
 		
 	def __repr__(self):

@@ -8,21 +8,32 @@ you need to call it before rendering each frame."""
 	t = _pg.time.get_ticks()
 	for a in _running:
 		a._update(t)
+
+def _stopall(method, flags):
+	if flags is None:
+		dellist = _running[:]
+	else:
+		dellist = [a for a in _running if a.match(flags)]
+	for anim in dellist:
+		method(anim, noerror=True)
 	
-def stop_all():
-	"""stop all running animations. see pygame_animation.Animation.stop for more information."""
-	while _running:
-		_running[0].stop(noerror=True)
+def stop_all(flags=None):
+	"""stop all running animations. see pygame_animations.Animation.stop for more information.
 
-def cancel_all():
-	"""cancel all running animations. see pygame_animation.Animation.cancel for more information."""
-	while _running:
-		_running[0].cancel(noerror=True)
+if flags is given, stop only the animations that matches the flags. see pygame_animations.Animation.match for more information."""
+	_stopall(Animation.stop, flags)
 
-def fastforward_all():
-	"""fast-forward all running animations. see pygame_animation.Animation.fastforward for more information."""
-	while _running:
-		_running[0].fastforward(noerror=True)
+def cancel_all(flags=None):
+	"""cancel all running animations. see pygame_animations.Animation.cancel for more information.
+
+if flags is given, cancel only the animations that matches the flags. see pygame_animations.Animation.match for more information."""
+	_stopall(Animation.cancel, flags)
+
+def fastforward_all(flags=None):
+	"""fast-forward all running animations. see pygame_animations.Animation.fastforward for more information.
+
+if flags is given, fast-forward only the animations that matches the flags. see pygame_animations.Animation.match for more information."""
+	_stopall(Animation.fastforward, flags)
 	
 __all__ = ['Animation', 'AnimationSequence', 'AnimationGroup', 'Effects', 'update_animations', 'stop_all', 'cancel_all', 'fastforward_all', 'ANIMATIONSTARTED', 'ANIMATIONENDED']
 __doc__ = """implements animations for pygame

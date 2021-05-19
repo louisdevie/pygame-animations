@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="La classe Animation" href="animation.html" />
+    <link rel="next" title="Les classes Animation" href="animation.html" />
     <link rel="prev" title="Comment utiliser le paquet" href="usage.html" /> 
 </head>
 
@@ -89,7 +89,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Comment utiliser le paquet</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Fonctions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="animation.html">La classe Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Les classes Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Évènements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="effects.html">Effets d’animation</a></li>
 </ul>
 
@@ -176,8 +177,9 @@
 
 <dl class="py function">
 <dt id="pygame_animations.stop_all">
-<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">stop_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.stop_all" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">stop_all</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">flags=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.stop_all" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Arrête toutes les animations en cours. Voir <a class="reference internal" href="animation.html#stopmethod"><span class="std std-ref">Animation.stop</span></a> pour plus d’informations.</p>
+<p>Si <code class="docutils literal notranslate"><span class="pre">flags</span></code> est passé, arrête uniquement les animations correspondantes. Voir <a class="reference internal" href="animation.html#matchmethod"><span class="std std-ref">Animation.match</span></a> pour plus d’informations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p>Aucuns</p>
@@ -190,8 +192,9 @@
 
 <dl class="py function">
 <dt id="pygame_animations.cancel_all">
-<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">cancel_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.cancel_all" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">cancel_all</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">flags=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.cancel_all" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Annule toutes les animations en cours. Voir <a class="reference internal" href="animation.html#cancelmethod"><span class="std std-ref">Animation.cancel</span></a> pour plus d’informations.</p>
+<p>Si <code class="docutils literal notranslate"><span class="pre">flags</span></code> est passé, annule uniquement les animations correspondantes. Voir <a class="reference internal" href="animation.html#matchmethod"><span class="std std-ref">Animation.match</span></a> pour plus d’informations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p>Aucuns</p>
@@ -204,8 +207,9 @@
 
 <dl class="py function">
 <dt id="pygame_animations.fastforward_all">
-<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">fastforward_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.fastforward_all" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">fastforward_all</span></code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">flags=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.fastforward_all" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Termine toutes les animations en cours. Voir <a class="reference internal" href="animation.html#fastforwardmethod"><span class="std std-ref">Animation.fastforward</span></a> pour plus d’informations.</p>
+<p>Si <code class="docutils literal notranslate"><span class="pre">flags</span></code> est passé, termine uniquement les animations correspondantes. Voir <a class="reference internal" href="animation.html#matchmethod"><span class="std std-ref">Animation.match</span></a> pour plus d’informations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p>Aucuns</p>
@@ -224,7 +228,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="animation.html" class="btn btn-neutral float-right" title="La classe Animation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="animation.html" class="btn btn-neutral float-right" title="Les classes Animation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="usage.html" class="btn btn-neutral float-left" title="Comment utiliser le paquet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
     </div>
 

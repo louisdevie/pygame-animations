@@ -62,4 +62,4 @@ Un objet qui valide les conditions suivantes peut être utilisée comme effet:
 
 Le paramètre est la progression *dans le temps* de l'animation (de 0 au début à 1 à la fin).
 
-La valeur revoyée est la progression dans l'animation (0 = état initial et 1 est l'état final). Elle doit être à 0 au début et à 1 à la fin (exception: ``Effects.sin_shake`` qui revient à 0).
+La valeur revoyée est la progression dans l'animation (0 = état initial et 1 = état final). Elle doit être à 0 au début et à 1 à la fin (exception: ``Effects.sin_shake`` qui revient à 0).

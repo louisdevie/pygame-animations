@@ -170,7 +170,7 @@
 <h2>Classe Animation<a class="headerlink" href="#classe-animation" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py class">
 <dt id="pygame_animations.Animation">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">Animation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target,</span> <span class="pre">duration[,</span> <span class="pre">effect]</span> <span class="pre">[,</span> <span class="pre">flag=None],</span> <span class="pre">**attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pygame_animations.</span></code><code class="sig-name descname"><span class="pre">Animation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">target,</span> <span class="pre">duration[,</span> <span class="pre">effect]</span> <span class="pre">[,</span> <span class="pre">flags=None],</span> <span class="pre">**attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Une animation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -178,7 +178,7 @@
 <li><p><strong>target</strong> <em>(object)</em>: l’objet à animer.</p></li>
 <li><p><strong>duration</strong> <em>(int, float)</em>: durée de l’animation, en secondes.</p></li>
 <li><p><strong>effect</strong> <em>(callable)</em>: effet à appliquer à l’animation. Il peut être un <a class="reference internal" href="effects.html#nativeeffects"><span class="std std-ref">effet natif</span></a> ou un <a class="reference internal" href="effects.html#customeffects"><span class="std std-ref">effet personnalisé</span></a>.</p></li>
-<li><p><strong>flag</strong> : sert à repérer l’animation. N’importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.</p></li>
+<li><p><strong>flags</strong> <em>(str)</em>: servent à repérer l’animation. les étiquettes doivent être alphanumériques et séparées par des virgules.</p></li>
 <li><p><strong>attrs</strong> : propriétés à animer. pour désigner une sous-propriété <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code>, utilisez <code class="docutils literal notranslate"><span class="pre">a__b__c</span></code></p></li>
 </ul>
 </dd>
@@ -285,6 +285,26 @@
 </dl>
 </dd></dl>
 
+<span class="target" id="matchmethod"></span><dl class="py function">
+<dt id="pygame_animations.Animation.match">
+<code class="sig-name descname"><span class="pre">match</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.Animation.match" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si les étiquettes de l’animation correspondent aux étiquettes données.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flags</strong> <em>(str)</em>: les étiquettes à tester, séparées par des virgules. L’étiquette <code class="docutils literal notranslate"><span class="pre">*</span></code> correspond à n’importe quoi et <code class="docutils literal notranslate"><span class="pre">flag1|flag2</span></code> correspond soit à <code class="docutils literal notranslate"><span class="pre">flag1</span></code> soit à <code class="docutils literal notranslate"><span class="pre">flag2</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>match() renverra toujours <code class="docutils literal notranslate"><span class="pre">False</span></code> pour une animation sans étiquettes</p>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -300,7 +320,7 @@ Une séquence peut être créée en additionnant plusieurs animations : <code cl
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong>, <strong>b</strong> et <strong>others</strong> <em>(Animation)</em>: les animations de la séquence</p></li>
-<li><p><strong>flag</strong> : sert à repérer l’animation. N’importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.</p></li>
+<li><p><strong>flags</strong> <em>(str)</em>: servent à repérer l’animation. les étiquettes doivent être alphanumériques et séparées par des virgules.</p></li>
 </ul>
 </dd>
 </dl>
@@ -319,16 +339,7 @@ Une séquence peut être créée en additionnant plusieurs animations : <code cl
 <dl class="py function">
 <dt id="pygame_animations.AnimationSequence.start">
 <code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.start" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Lance l’animation. Elle ne peut être appelée qu’une seule fois.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p>Aucuns</p>
-</dd>
-<dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <span class="target" id="stopsequence"></span><dl class="py function">
 <dt id="pygame_animations.AnimationSequence.stop">
@@ -353,7 +364,7 @@ Une séquence peut être créée en additionnant plusieurs animations : <code cl
 <dl class="field-list simple">
 <dt class="field-odd">Paramètre</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopsequence"><span class="std std-ref">stop()</span></a></p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
@@ -369,7 +380,7 @@ Une séquence peut être créée en additionnant plusieurs animations : <code cl
 <dl class="field-list simple">
 <dt class="field-odd">Paramètre</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopsequence"><span class="std std-ref">stop()</span></a></p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
@@ -381,30 +392,17 @@ Une séquence peut être créée en additionnant plusieurs animations : <code cl
 <dl class="py function">
 <dt id="pygame_animations.AnimationSequence.is_running">
 <code class="sig-name descname"><span class="pre">is_running</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.is_running" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation est en cours.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p>Aucuns</p>
-</dd>
-<dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt id="pygame_animations.AnimationSequence.can_run">
 <code class="sig-name descname"><span class="pre">can_run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.can_run" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation n’a pas encore été lancée.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p>Aucuns</p>
-</dd>
-<dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationSequence.match">
+<code class="sig-name descname"><span class="pre">match</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationSequence.match" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -421,7 +419,7 @@ Un groupe peut être créé en utilisant l’opérateur <code class="docutils li
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong>, <strong>b</strong> et <strong>others</strong> <em>(Animation)</em>: les animations du groupe</p></li>
-<li><p><strong>flag</strong> : sert à repérer l’animation. N’importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.</p></li>
+<li><p><strong>flags</strong> <em>(str)</em>: servent à repérer l’animation. les étiquettes doivent être alphanumériques et séparées par des virgules.</p></li>
 </ul>
 </dd>
 </dl>
@@ -440,16 +438,7 @@ Un groupe peut être créé en utilisant l’opérateur <code class="docutils li
 <dl class="py function">
 <dt id="pygame_animations.AnimationGroup.start">
 <code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.start" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Lance l’animation. Elle ne peut être appelée qu’une seule fois.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p>Aucuns</p>
-</dd>
-<dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <span class="target" id="stopgroup"></span><dl class="py function">
 <dt id="pygame_animations.AnimationGroup.stop">
@@ -474,7 +463,7 @@ Un groupe peut être créé en utilisant l’opérateur <code class="docutils li
 <dl class="field-list simple">
 <dt class="field-odd">Paramètre</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopgroup"><span class="std std-ref">stop()</span></a></p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
@@ -490,7 +479,7 @@ Un groupe peut être créé en utilisant l’opérateur <code class="docutils li
 <dl class="field-list simple">
 <dt class="field-odd">Paramètre</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopmethod"><span class="std std-ref">stop()</span></a></p></li>
+<li><p><strong>noerror</strong> <em>(bool)</em>: voir <a class="reference internal" href="#stopgroup"><span class="std std-ref">stop()</span></a></p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie</dt>
@@ -502,30 +491,17 @@ Un groupe peut être créé en utilisant l’opérateur <code class="docutils li
 <dl class="py function">
 <dt id="pygame_animations.AnimationGroup.is_running">
 <code class="sig-name descname"><span class="pre">is_running</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.is_running" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation est en cours.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p>Aucuns</p>
-</dd>
-<dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt id="pygame_animations.AnimationGroup.can_run">
 <code class="sig-name descname"><span class="pre">can_run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.can_run" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Renvoie <code class="docutils literal notranslate"><span class="pre">True</span></code> si l’animation n’a pas encore été lancée.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p>Aucuns</p>
-</dd>
-<dt class="field-even">Renvoie</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pygame_animations.AnimationGroup.match">
+<code class="sig-name descname"><span class="pre">match</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygame_animations.AnimationGroup.match" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

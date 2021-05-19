@@ -6,6 +6,8 @@
 Documentation de pygame-animations
 ======================================
 
+*Also available in* `english <https://pygame-animations.readthedocs.io/en/latest>`_
+
 Ce paquet est une extension pour pygame qui vous permet d'animer presque n'importe quoi.
 
 Installation :

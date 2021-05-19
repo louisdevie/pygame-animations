@@ -6,7 +6,7 @@
  Classe Animation
 ------------------
 
-.. class:: pygame_animations.Animation(target, duration[, effect] [, flag=None], **attrs)
+.. class:: pygame_animations.Animation(target, duration[, effect] [, flags=None], **attrs)
 
     Une animation.
     
@@ -14,7 +14,7 @@
         - **target** *(object)*: l'objet à animer.
         - **duration** *(int, float)*: durée de l'animation, en secondes.
         - **effect** *(callable)*: effet à appliquer à l'animation. Il peut être un :ref:`effet natif <nativeeffects>` ou un :ref:`effet personnalisé <customeffects>`.
-        - **flag** : sert à repérer l'animation. N'importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.
+        - **flags** *(str)*: servent à repérer l'animation. les étiquettes doivent être alphanumériques et séparées par des virgules.
         - **attrs** : propriétés à animer. pour désigner une sous-propriété ``a.b.c``, utilisez ``a__b__c``
     
     .. attribute:: target
@@ -82,6 +82,19 @@
         
         :Renvoie: ``bool``
 
+    .. _matchmethod:
+
+    .. function:: match(flags)
+
+        Renvoie ``True`` si les étiquettes de l'animation correspondent aux étiquettes données.
+        
+        :Paramètres:
+            - **flags** *(str)*: les étiquettes à tester, séparées par des virgules. L'étiquette ``*`` correspond à n'importe quoi et ``flag1|flag2`` correspond soit à ``flag1`` soit à ``flag2``.
+        
+        :Renvoie: ``bool``
+
+        .. Note:: match() renverra toujours ``False`` pour une animation sans étiquettes
+
 
 --------------------------
  Classe AnimationSequence
@@ -96,7 +109,7 @@
     
     :Paramètres:
         - **a**, **b** et **others** *(Animation)*: les animations de la séquence
-        - **flag** : sert à repérer l'animation. N'importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.
+        - **flags** *(str)*: servent à repérer l'animation. les étiquettes doivent être alphanumériques et séparées par des virgules.
     
     .. attribute:: animations
         
@@ -107,12 +120,6 @@
         (Lecture seule) La durée de l'animation, égale à la somme des durées des animations.
     
     .. function:: start()
-        
-        Lance l'animation. Elle ne peut être appelée qu'une seule fois.
-        
-        :Paramètres: Aucuns
-        
-        :Renvoie: ``None``
 
     .. _stopsequence:
 
@@ -132,7 +139,7 @@
         Pareil que :ref:`stop() <stopsequence>`, mais appelle :ref:`cancel() <cancelmethod>` sur toutes les animations.
 
         :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+            - **noerror** *(bool)*: voir :ref:`stop() <stopsequence>`
         
         :Renvoie: ``None``
 
@@ -143,25 +150,15 @@
         Pareil que :ref:`stop() <stopsequence>`, mais appelle :ref:`fastforward() <fastforwardmethod>` sur toutes les animations.
 
         :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+            - **noerror** *(bool)*: voir :ref:`stop() <stopsequence>`
         
         :Renvoie: ``None``
         
     .. function:: is_running()
 
-        Renvoie ``True`` si l'animation est en cours.
-        
-        :Paramètres: Aucuns
-        
-        :Renvoie: ``bool``
-        
     .. function:: can_run()
 
-        Renvoie ``True`` si l'animation n'a pas encore été lancée.
-        
-        :Paramètres: Aucuns
-        
-        :Renvoie: ``bool``
+    .. function:: match(flags)
 
 
 -----------------------
@@ -177,7 +174,7 @@
     
     :Paramètres:
         - **a**, **b** et **others** *(Animation)*: les animations du groupe
-        - **flag** : sert à repérer l'animation. N'importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.
+        - **flags** *(str)*: servent à repérer l'animation. les étiquettes doivent être alphanumériques et séparées par des virgules.
     
     .. attribute:: animations
         
@@ -188,12 +185,6 @@
         (Lecture seule) La durée de l'animation, égale à la durée la plus longue de toutes les animations.
     
     .. function:: start()
-        
-        Lance l'animation. Elle ne peut être appelée qu'une seule fois.
-        
-        :Paramètres: Aucuns
-        
-        :Renvoie: ``None``
 
     .. _stopgroup:
 
@@ -213,7 +204,7 @@
         Pareil que :ref:`stop() <stopgroup>`, mais appelle :ref:`cancel() <cancelmethod>` sur toutes les animations.
 
         :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+            - **noerror** *(bool)*: voir :ref:`stop() <stopgroup>`
         
         :Renvoie: ``None``
 
@@ -224,22 +215,12 @@
         Pareil que :ref:`stop() <stopgroup>`, mais appelle :ref:`fastforward() <fastforwardmethod>` sur toutes les animations.
 
         :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+            - **noerror** *(bool)*: voir :ref:`stop() <stopgroup>`
         
         :Renvoie: ``None``
         
     .. function:: is_running()
-
-        Renvoie ``True`` si l'animation est en cours.
-        
-        :Paramètres: Aucuns
-        
-        :Renvoie: ``bool``
         
     .. function:: can_run()
 
-        Renvoie ``True`` si l'animation n'a pas encore été lancée.
-        
-        :Paramètres: Aucuns
-        
-        :Renvoie: ``bool``
+    .. function:: match(flags)

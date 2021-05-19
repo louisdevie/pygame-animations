@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "root",
+			"file_exclude_patterns": [
+				".gitignore",
+			],
+			"folder_exclude_patterns": [
+				"*",
+			],
+		},
+		{
+			"path": "./docs/source",
+			"name": "docs",
+			"folder_exclude_patterns": [
+				"*",
+			],
+		},
+		{
+			"path": "./pygame_animations",
+			"name": "source",
+			"file_exclude_patterns": [
+				".gitignore",
+			],
+			"folder_exclude_patterns": [
+				"*",
+			],
+		},
+		{
+			"path": "./docs",
+			"name": "docsbuild",
+			"folder_exclude_patterns": [
+				"*",
+			],
+		},
+	],
+}
