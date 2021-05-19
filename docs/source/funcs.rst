@@ -16,7 +16,8 @@
 
     Si ``flags`` est passé, arrête uniquement les animations correspondantes. Voir :ref:`Animation.match <matchmethod>` pour plus d'informations.
     
-    :Paramètres: Aucuns
+    :Paramètres:
+        - **flags** *(str)*: Voir :ref:`Animation.match <matchmethod>`.
     
     :Renvoie: ``None``
 
@@ -24,9 +25,10 @@
     
     Annule toutes les animations en cours. Voir :ref:`Animation.cancel <cancelmethod>` pour plus d'informations.
 
-    Si ``flags`` est passé, annule uniquement les animations correspondantes. Voir :ref:`Animation.match <matchmethod>` pour plus d'informations.
+    Si ``flags`` est passé, arrête uniquement les animations correspondantes. Voir :ref:`Animation.match <matchmethod>` pour plus d'informations.
     
-    :Paramètres: Aucuns
+    :Paramètres:
+        - **flags** *(str)*: Voir :ref:`Animation.match <matchmethod>`.
     
     :Renvoie: ``None``
 
@@ -34,8 +36,10 @@
     
     Termine toutes les animations en cours. Voir :ref:`Animation.fastforward <fastforwardmethod>` pour plus d'informations.
 
-    Si ``flags`` est passé, termine uniquement les animations correspondantes. Voir :ref:`Animation.match <matchmethod>` pour plus d'informations.
+    Si ``flags`` est passé, arrête uniquement les animations correspondantes. Voir :ref:`Animation.match <matchmethod>` pour plus d'informations.
     
-    :Paramètres: Aucuns
+    :Paramètres:
+        - **flags** *(str)*: Voir :ref:`Animation.match <matchmethod>`.
     
     :Renvoie: ``None``
+    
