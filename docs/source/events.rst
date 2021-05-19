@@ -10,14 +10,12 @@ Ce paquet rajoute donc deux types d'évènements:
     
     Posté quand une animation débute.
 
-    :Attributs:
+    :Attributs de l'évènement:
         - **animation** : l'animation qui a été lancée.
-        - **flag** : le ``flag`` de l'animation.
 
 .. attribute:: pygame_animations.ANIMATIONENDED
     
     Posté quand une animation prends fin.
 
-    :Attributs:
+    :Attributs de l'évènement:
         - **animation** : l'animation qui a pris fin.
-        - **flag** : le ``flag`` de l'animation.
